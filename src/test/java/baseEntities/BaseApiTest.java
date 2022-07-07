@@ -14,8 +14,8 @@ public class BaseApiTest {
     public TestRunsAndResultsHelper testRunAndResultHelper;
 
     @BeforeTest
-    @Given("I set sample REST API url and I Set HEADER param request content type as \"json\"")
-    public void iSetSampleRESTAPIUrl() {
+    @Given("I set sample REST API url,username,psw I Set HEADER param request content type as \"json\"")
+    public void setSampleRESTAPIUrl() {
         RestAssured.baseURI = ReadProperties.getUrl();
         RestAssured.requestSpecification = given()
                 .header(HTTP.CONTENT_TYPE, ContentType.JSON)
