@@ -10,34 +10,58 @@ import lombok.Getter;
 @Getter
 public class TestRuns {
     private int id;
-    private int suite_id;
+    @SerializedName(value = "suite_id")
+    private int suiteId;
     private String name;
     private String description;
-    private int milestone_id;
-    private int assignedto_id;
-    private boolean include_all;
-    private boolean is_completed;
-    private String completed_on;
+    @SerializedName(value = "milestone_id")
+    private int milestoneId;
+    @SerializedName(value = "assignedto_id;")
+    private int assignedToId;
+    @SerializedName(value = "include_all")
+    private boolean includeAll;
+    @SerializedName(value = "is_completed")
+    private boolean isCompleted;
+    @SerializedName(value = "completed_on")
+    private String completedOn;
     private String config;
-//    private int[] config_ids; //вопрос
-    private int passed_count;
-    private int blocked_count;
-    private int untested_count;
-    private int retest_count;
-    private int failed_count;
-    private int custom_status1_count;
-    private int custom_status2_count;
-    private int custom_status3_count;
-    private int custom_status4_count;
-    private int custom_status5_count;
-    private int custom_status6_count;
-    private int custom_status7_count;
-    private int project_id;
-    private int plan_id;
-    private int created_on;
-    private int updated_on;
+    @SerializedName(value = "config_ids")
+    private int[] configIds; //вопрос
+    @SerializedName(value = "passed_count")
+    private int passedCount;
+    @SerializedName(value = "blocked_count")
+    private int blockedCount;
+    @SerializedName(value = "untested_count")
+    private int untestedCount;
+    @SerializedName(value = "retest_count")
+    private int retestCount;
+    @SerializedName(value = "failed_count")
+    private int failedCount;
+    @SerializedName(value = "custom_status1_count")
+    private int customStatus1Count;
+    @SerializedName(value = "custom_status2_count")
+    private int customStatus2Count;
+    @SerializedName(value = "custom_status3_count")
+    private int customStatus3Count;
+    @SerializedName(value = "custom_status4_count")
+    private int customStatus4Count;
+    @SerializedName(value = "custom_status5_count")
+    private int customStatus5Count;
+    @SerializedName(value = "custom_status6_count")
+    private int customStatus6Count;
+    @SerializedName(value = "custom_status7_count")
+    private int customStatus7Count;
+    @SerializedName(value = "project_id")
+    private int projectId;
+    @SerializedName(value = "plan_id")
+    private int planId;
+    @SerializedName(value = "created_on")
+    private int createdOn;
+    @SerializedName(value = "updated_on")
+    private int updatedOn;
     private String refs;
-    private int created_by;
+    @SerializedName(value = "created_by")
+    private int createdBy;
     private String url;
 
 }
