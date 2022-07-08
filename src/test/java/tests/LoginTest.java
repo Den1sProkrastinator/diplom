@@ -1,42 +1,32 @@
 package tests;
-import com.codeborne.selenide.AssertionMode;
-import com.codeborne.selenide.CollectionCondition;
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.logevents.SelenideLogger;
+import baseEntities.BaseTest;
+import com.codeborne.selenide.SelenideElement;
 import core.ReadProperties;
-import io.qameta.allure.selenide.AllureSelenide;
-import org.openqa.selenium.By;
-import org.testng.annotations.BeforeSuite;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.LoginPage;
-import static com.codeborne.selenide.CollectionCondition.size;
-import static com.codeborne.selenide.Condition.*;
+
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
-import static org.openqa.selenium.remote.tracing.EventAttribute.setValue;
+import static com.codeborne.selenide.Selectors.byClassName;
+import static com.codeborne.selenide.Selenide.$;
 
 
-public class LoginTest {
+
+public class LoginTest extends BaseTest {
+
 
 
     @Test
 
-    public void LoginTest(){
+    public void successLoginTest(){
 
-
-        open(ReadProperties.getUrl());
-
-        LoginPage loginPage = new LoginPage();
-       loginPage.userName.setValue(ReadProperties.username());
-        loginPage.passWord.setValue(ReadProperties.password());
-        loginPage.buttonEnter.click();
-
+        loginStep.successLogin(ReadProperties.username(),ReadProperties.password());
         $(".page_title").shouldBe(visible).shouldHave(text("All projects"));
 
 
     }
+
 
 
 }
