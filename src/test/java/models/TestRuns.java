@@ -9,9 +9,9 @@ import lombok.Getter;
 @Data
 @Builder
 @Getter
-@EqualsAndHashCode
+
 public class TestRuns {
-    private int id;
+//    private int id;
     @SerializedName(value = "suite_id")
     private int suiteId;
     private String name;

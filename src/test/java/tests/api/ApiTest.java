@@ -25,14 +25,14 @@ public class ApiTest extends BaseApiTest {
 
     @Test(priority = 2)
     public void addRun() {
-        TestRuns milestone = TestRuns.builder()
+        TestRuns testRun = TestRuns.builder()
                 .name("TestRun")
                 .build();
         Map<String, Object> jsonMap = new HashMap<>();
 
-        jsonMap.put("name", milestone.getName());
+        jsonMap.put("name", testRun.getName());
 
-        testRunsAndResultsHelper.addRun(21, jsonMap);
+        testRunsAndResultsHelper.addRun(20, jsonMap);
     }
 
     @Test(priority = 5)
@@ -47,8 +47,6 @@ public class ApiTest extends BaseApiTest {
                 .build();
         Map<String, Object> jsonMap = new HashMap<>();
         jsonMap.put("name", milestone.getName());
-
-
         projectId= projectHelper.addProject(jsonMap);
 
     }
