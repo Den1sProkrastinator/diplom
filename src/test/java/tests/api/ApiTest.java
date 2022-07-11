@@ -2,11 +2,9 @@ package tests.api;
 
 
 import baseEntities.BaseApiTest;
-
 import io.qameta.allure.Description;
-
 import models.TestRuns;
-
+import org.apache.http.HttpStatus;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
@@ -18,17 +16,17 @@ public class ApiTest extends BaseApiTest {
     public int projectId;
     public int runID;
 
-    @Test(priority = 3,description = "Get run")
+    @Test(priority = 3, description = "Positive Get run test")
     public void getRun() {
-        testRunsAndResultsHelper.getRun(runID);
+        testRunsAndResultsHelper.getRun(runID, HttpStatus.SC_OK);
     }
 
-    @Test(priority = 4,description = "Get Runs")
+    @Test(priority = 4, description = "Positive Get Runs test")
     public void getRuns() {
-        testRunsAndResultsHelper.getRuns(projectId);
+        testRunsAndResultsHelper.getRuns(projectId, HttpStatus.SC_OK);
     }
 
-    @Test(priority = 2,description = "Add Run")
+    @Test(priority = 2, description = "Positive Add Run test")
     public void addRun() {
         TestRuns testRun = TestRuns.builder()
                 .name("TestRun")
@@ -37,23 +35,24 @@ public class ApiTest extends BaseApiTest {
 
         jsonMap.put("name", testRun.getName());
 
-        testRunsAndResultsHelper.addRun(20, jsonMap);
+        testRunsAndResultsHelper.addRun(projectId, jsonMap, HttpStatus.SC_OK);
+
     }
 
-    @Test(priority = 5,description = "Delete run")
+    @Test(priority = 5, description = "Positive Delete run test")
     public void deleteRun() {
-        testRunsAndResultsHelper.deleteRun(4);
+        testRunsAndResultsHelper.deleteRun(runID);
     }
 
-    @Test(priority = 1,description = "Add project")
-//    @Description("Создание проекта с помощью Builder и Lombok ")
+    @Test(priority = 1, description = "Positive Add project test")
+    @Description("Создание проекта с Lombok  и Builder ")
     public void addProject() {
         TestRuns milestone = TestRuns.builder()
                 .name("TEEEEET")
                 .build();
         Map<String, Object> jsonMap = new HashMap<>();
         jsonMap.put("name", milestone.getName());
-        projectId= projectHelper.addProject(jsonMap);
+        projectId = projectHelper.addProject(jsonMap, HttpStatus.SC_OK);
 
     }
 

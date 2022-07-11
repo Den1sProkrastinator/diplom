@@ -12,21 +12,20 @@ import static io.restassured.RestAssured.given;
 public class ProjectHelper {
 
 
-    public int addProject(Map jsonMap) {
+    public int addProject(Map jsonMap, int httpStatus) {
 
-        JsonPath jsonPath= given()
+        JsonPath jsonPath = given()
                 .body(jsonMap)
                 .when()
                 .post(Endpoints.ADD_PROJECT)
                 .then()
                 .assertThat()
-                .statusCode(HttpStatus.SC_OK)
+                .statusCode(httpStatus)
                 .log().body()
                 .extract()
                 .jsonPath();
 
-       return jsonPath.getInt("id");
-
+        return jsonPath.getInt("id");
 
 
     }

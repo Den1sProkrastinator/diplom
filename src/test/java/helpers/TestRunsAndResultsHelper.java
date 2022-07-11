@@ -4,6 +4,7 @@ package helpers;
 import core.Endpoints;
 import models.TestRuns;
 import org.apache.http.HttpStatus;
+import org.hamcrest.Matcher;
 
 import java.util.Map;
 
@@ -12,31 +13,31 @@ import static io.restassured.RestAssured.given;
 public class TestRunsAndResultsHelper {
 
 
-    public TestRuns getRun(int testRunID) {
+    public TestRuns getRun(int testRunID, int httpSatus) {
         return given()
                 .pathParam("run_id", testRunID)
                 .get(Endpoints.GET_RUN)
                 .then()
                 .assertThat()
-                .statusCode(HttpStatus.SC_OK)
+                .statusCode(httpSatus)
                 .log().body()
                 .extract()
                 .as(TestRuns.class);
     }
 
-    public TestRuns getRuns(int projectID) {
+    public TestRuns getRuns(int projectID, int httpStatus) {
         return given()
                 .pathParams("project_id", projectID)
                 .get(Endpoints.GET_RUNS)
                 .then()
                 .assertThat()
-                .statusCode(HttpStatus.SC_OK)
+                .statusCode(httpStatus)
                 .log().body()
                 .extract()
                 .as(TestRuns.class);
     }
 
-    public TestRuns addRun(int projectID, Map jsonMap) {
+    public TestRuns addRun(int projectID, Map jsonMap, int httpStatus) {
 
         return given()
                 .pathParams("project_id", projectID)
@@ -44,7 +45,7 @@ public class TestRunsAndResultsHelper {
                 .post(Endpoints.ADD_RUN)
                 .then()
                 .assertThat()
-                .statusCode(HttpStatus.SC_OK)
+                .statusCode(httpStatus)
                 .log().body()
                 .extract()
                 .as(TestRuns.class);
