@@ -5,10 +5,13 @@ import core.Endpoints;
 import models.TestRuns;
 import org.apache.http.HttpStatus;
 import org.hamcrest.Matcher;
+import org.testng.annotations.Test;
 
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 
 public class TestRunsAndResultsHelper {
 
@@ -50,6 +53,16 @@ public class TestRunsAndResultsHelper {
                 .extract()
                 .as(TestRuns.class);
 
+    }
+
+    @Test
+    public TestRuns getExactProjectAsObjects(int runID) {
+        return given()
+                .pathParams("run_id", runID)
+                .get(Endpoints.GET_RUN)
+                .then()
+                .extract()
+                .as(TestRuns.class);
     }
 
     public void deleteRun(int testRunID) {

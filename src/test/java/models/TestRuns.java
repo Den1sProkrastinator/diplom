@@ -11,6 +11,10 @@ import lombok.Getter;
 @Getter
 
 public class TestRuns {
+    //uncorrected field
+    private String uncorrectedField;
+
+    //corrected fields
     private int id;
     @SerializedName(value = "suite_id")
     private int suiteId;
