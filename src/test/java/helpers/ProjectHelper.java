@@ -1,11 +1,9 @@
 package helpers;
 
+
 import core.Endpoints;
 import io.restassured.path.json.JsonPath;
-import models.Project;
-import models.TestRuns;
 import org.apache.http.HttpStatus;
-import org.testng.Assert;
 
 import java.util.Map;
 

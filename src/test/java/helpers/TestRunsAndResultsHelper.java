@@ -1,10 +1,9 @@
 package helpers;
 
+
 import core.Endpoints;
-import models.Project;
 import models.TestRuns;
 import org.apache.http.HttpStatus;
-import org.testng.annotations.Test;
 
 import java.util.Map;
 
@@ -13,7 +12,7 @@ import static io.restassured.RestAssured.given;
 public class TestRunsAndResultsHelper {
 
 
-    public TestRuns getProject(int testRunID) {
+    public TestRuns getRun(int testRunID) {
         return given()
                 .pathParam("run_id", testRunID)
                 .get(Endpoints.GET_RUN)
@@ -25,7 +24,7 @@ public class TestRunsAndResultsHelper {
                 .as(TestRuns.class);
     }
 
-    public TestRuns getProjects(int projectID) {
+    public TestRuns getRuns(int projectID) {
         return given()
                 .pathParams("project_id", projectID)
                 .get(Endpoints.GET_RUNS)
