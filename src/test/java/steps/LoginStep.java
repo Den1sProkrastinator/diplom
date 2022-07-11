@@ -12,6 +12,7 @@ public class LoginStep extends BaseStep {
 
     public DashboardPage successLogin(String user, String pass) {
         login(user, pass);
+
         return dashPage;
 
     }

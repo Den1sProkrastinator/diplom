@@ -12,7 +12,7 @@ public class DashboardPage extends BasePage {
 
 
 
-    private SelenideElement DashboardLocator
+    public SelenideElement DashboardLocator
             = $(byXpath("//div[contains(@class, 'content-header-title') and contains(text(), 'Dashboard')]"));
 
 

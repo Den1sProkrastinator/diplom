@@ -5,9 +5,9 @@ import pages.ProjectsPage;
 
 
 public class BaseStep {
-    protected LoginPage loginPage;
-    protected DashboardPage dashPage;
+    protected LoginPage loginPage = new LoginPage();
+    protected DashboardPage dashPage = new DashboardPage();
 
-    protected ProjectsPage projectsPage;
+    protected ProjectsPage projectsPage = new ProjectsPage();
 
 }
