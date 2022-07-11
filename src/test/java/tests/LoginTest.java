@@ -21,8 +21,8 @@ public class LoginTest extends BaseTest {
 
     public void successLoginTest(){
 
-        loginStep.successLogin(ReadProperties.username(),ReadProperties.password());
-        $(".page_title").shouldBe(visible).shouldHave(text("All projects"));
+        loginStep.successLogin(ReadProperties.username(),ReadProperties.password()).isPageOpened();
+
 
 
     }

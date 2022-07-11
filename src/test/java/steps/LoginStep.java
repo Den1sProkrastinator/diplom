@@ -11,9 +11,14 @@ public class LoginStep extends BaseStep {
 
 
     public DashboardPage successLogin(String user, String pass) {
-        login(user,pass);
+        login(user, pass);
         return dashPage;
 
+    }
+    public LoginPage incorrectLogin(String user, String pass) {
+        login(user, pass);
+
+        return loginPage;
     }
 
 
@@ -25,6 +30,11 @@ private void login(String user, String pass){
     loginPage.buttonEnter.click();
 
 }
+
+    public LoginPage logout() {
+
+        return loginPage;
+    }
 
 
 }
