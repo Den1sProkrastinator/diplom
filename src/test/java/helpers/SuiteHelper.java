@@ -32,10 +32,8 @@ public class SuiteHelper {
                 .get(Endpoints.GET_SUITES)
                 .then()
                 .assertThat()
-                .statusCode(httpStatus)
-                .log().body()
-                .extract()
-                .as(Suite.class);
+                .statusCode(httpStatus);
+
     }
 
     public int addSuite(int projectID, Map jsonMap, int httpStatus) {
