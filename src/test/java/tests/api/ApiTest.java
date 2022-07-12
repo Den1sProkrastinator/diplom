@@ -54,7 +54,7 @@ public class ApiTest extends BaseApiTest {
 
         jsonMap.put("name", testRun.getName());
 
-        testRunsAndResultsHelper.addRun(projectId, jsonMap, HttpStatus.SC_OK);
+        testRunsAndResultsHelper.addRun(39, jsonMap, HttpStatus.SC_OK);
 
     }
 
@@ -75,7 +75,7 @@ public class ApiTest extends BaseApiTest {
     }
 
 
-    @Test(description = "Get exact project as objects test")
+    @Test(description = "NFE Get exact project as objects test")
     @Feature("NFE tests")
     @Story("NFE get exact project as objects test")
     @Description("Get exact test run as object ")
@@ -111,7 +111,7 @@ public class ApiTest extends BaseApiTest {
     @Feature("AEF tests")
     @Story("AEF add test")
     @Description("Add project with uncorrected field, expected status - 400")
-    public void addTestRunTest(){
+    public void addTestRunAEFTest(){
         TestRuns testRun = TestRuns.builder()
                 .name(runName)
                 .build();
