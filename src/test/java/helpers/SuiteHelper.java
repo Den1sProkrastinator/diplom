@@ -12,21 +12,21 @@ import static io.restassured.RestAssured.given;
 
 public class SuiteHelper {
 
-    public Suite getSuite(int suiteID, int httpSatus) {
+    public Suite getSuite(int suiteID, int httpStatus) {
         return given()
                 .pathParam("suite_id", suiteID)
                 .when()
                 .get(Endpoints.GET_SUITE)
                 .then()
                 .assertThat()
-                .statusCode(httpSatus)
+                .statusCode(httpStatus)
                 .log().body()
                 .extract()
                 .as(Suite.class);
     }
 
-    public Suite getSuites(int projectID, int httpStatus) {
-        return given()
+    public void getSuites(int projectID, int httpStatus) {
+         given()
                 .pathParams("project_id", projectID)
                 .when()
                 .get(Endpoints.GET_SUITES)

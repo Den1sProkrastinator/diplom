@@ -10,8 +10,6 @@ import lombok.Getter;
 @Getter
 @EqualsAndHashCode
 public class Suite {
-    private String uncorrectName;
-
     private int id;
     private String name;
 }

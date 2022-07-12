@@ -122,7 +122,7 @@ public class ApiTest extends BaseApiTest {
                 .build();
         Map<String, Object> jsonMap = new HashMap<>();
 
-        jsonMap.put("uncorrectedField", suite.getUncorrectName());
+        jsonMap.put("uncorrectedField", suite.getName());
 
         suiteHelper.addSuite(projectId, jsonMap, HttpStatus.SC_BAD_REQUEST);
 
