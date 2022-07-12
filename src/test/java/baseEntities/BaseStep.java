@@ -1,7 +1,5 @@
 package baseEntities;
-import pages.DashboardPage;
-import pages.LoginPage;
-import pages.ProjectsPage;
+import pages.*;
 
 
 public class BaseStep {

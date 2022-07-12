@@ -21,7 +21,7 @@ public class LoginTest extends BaseTest {
 
     public void successLoginTest(){
 
-        loginStep.successLogin(ReadProperties.username(),ReadProperties.password()).isPageOpened();
+        loginStep.successLogin(ReadProperties.username(),ReadProperties.password());
 
 
 

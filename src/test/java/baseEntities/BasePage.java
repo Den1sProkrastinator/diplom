@@ -10,9 +10,7 @@ public abstract class BasePage {
 
     protected abstract SelenideElement getPageIdentifier();
 
-    public boolean isPageOpened() {
-        return $(getPageIdentifier()).isDisplayed();
-    }
+
 
 
 
