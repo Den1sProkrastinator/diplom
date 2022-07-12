@@ -2,6 +2,7 @@ package baseEntities;
 
 import core.ReadProperties;
 import helpers.ProjectHelper;
+import helpers.SuiteHelper;
 import helpers.TestRunsAndResultsHelper;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
@@ -11,8 +12,9 @@ import org.testng.annotations.BeforeTest;
 import static io.restassured.RestAssured.given;
 
 public class BaseApiTest {
-    public TestRunsAndResultsHelper testRunsAndResultsHelper;
+
     public ProjectHelper projectHelper;
+    public SuiteHelper suiteHelper;
 
 
     @BeforeTest
@@ -23,8 +25,9 @@ public class BaseApiTest {
                 .auth().preemptive().basic(ReadProperties.username(), ReadProperties.password());
 
 
-        testRunsAndResultsHelper = new TestRunsAndResultsHelper();
+
         projectHelper = new ProjectHelper();
+        suiteHelper =new SuiteHelper();
 
     }
 }
