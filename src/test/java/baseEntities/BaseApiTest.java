@@ -17,7 +17,7 @@ public class BaseApiTest {
     public ProjectHelper projectHelper;
     public SuiteHelper suiteHelper;
 
-    @BeforeTest
+    @BeforeClass
     public void setupEnv() {
         RestAssured.baseURI = ReadProperties.getUrl();
         RestAssured.requestSpecification = given()

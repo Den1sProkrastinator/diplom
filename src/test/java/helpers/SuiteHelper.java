@@ -1,6 +1,7 @@
 package helpers;
 
 import core.Endpoints;
+import io.restassured.mapper.ObjectMapperType;
 import io.restassured.path.json.JsonPath;
 import models.Suite;
 import org.apache.http.HttpStatus;
@@ -24,7 +25,7 @@ public class SuiteHelper {
                 .statusCode(httpStatus)
                 .log().body()
                 .extract()
-                .as(Suite.class);
+                .as(Suite.class, ObjectMapperType.GSON);
     }
 
     public void getSuites(int projectID, int httpStatus) {

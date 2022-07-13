@@ -31,13 +31,15 @@ public class ApiTest extends BaseApiTest {
     @Story("NFE test")
     @Description("Create project by Lombok and Builder, expected status code - 200 ")
     public void addProjectNFETest() {
-        Project milestone = Project.builder()
+        System.out.println();
+        Project project = Project.builder()
                 .name("Test project")
                 .build();
         Map<String, Object> jsonMap = new HashMap<>();
-        jsonMap.put("name", milestone.getName());
+        jsonMap.put("name", project.getName());
         projectId = projectHelper.addProject(jsonMap, HttpStatus.SC_OK);
-
+        System.setProperty("project_id", String.valueOf(projectId));
+        String pp = System.getProperty("project_id");
     }
 
     @Test(priority = 2, description = "NFE Add Suite test")
