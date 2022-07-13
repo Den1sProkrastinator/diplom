@@ -1,7 +1,7 @@
 package baseEntities;
 
 import core.ReadProperties;
-import io.cucumber.java.Before;
+
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 

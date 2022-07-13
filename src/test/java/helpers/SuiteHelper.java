@@ -3,14 +3,14 @@ package helpers;
 import core.Endpoints;
 import io.restassured.path.json.JsonPath;
 import models.Suite;
-import models.TestRuns;
 import org.apache.http.HttpStatus;
+
 
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
+
+
 
 public class SuiteHelper {
 
@@ -67,15 +67,19 @@ public class SuiteHelper {
                 .log().body();
     }
 
-    public void getSuiteName(int suiteID,String suiteName) {
-        given()
+    public String getSuiteName(int suiteID) {
+
+        JsonPath jsonPath= given()
                 .pathParams("suite_id", suiteID)
                 .when()
-                .post(Endpoints.GET_SUITE)
+                .get(Endpoints.GET_SUITE)
                 .then()
-                .assertThat()
-                .statusCode(HttpStatus.SC_OK)
-                .body("name", equalTo(suiteName));
+                .log().status()
+                .log().body()
+                .extract()
+                .jsonPath();
 
+       return jsonPath.getString("name");
     }
 }
+

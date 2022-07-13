@@ -1,12 +1,13 @@
 package baseEntities;
 
+
 import core.ReadProperties;
 import helpers.ProjectHelper;
 import helpers.SuiteHelper;
-import helpers.TestRunsAndResultsHelper;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.apache.http.protocol.HTTP;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 
 import static io.restassured.RestAssured.given;
@@ -15,7 +16,6 @@ public class BaseApiTest {
 
     public ProjectHelper projectHelper;
     public SuiteHelper suiteHelper;
-
 
     @BeforeTest
     public void setupEnv() {
@@ -28,6 +28,7 @@ public class BaseApiTest {
 
         projectHelper = new ProjectHelper();
         suiteHelper =new SuiteHelper();
+
 
     }
 }

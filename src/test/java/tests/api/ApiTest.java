@@ -2,29 +2,20 @@ package tests.api;
 
 
 import baseEntities.BaseApiTest;
-import com.google.gson.Gson;
-import core.ReadProperties;
-import helpers.ProjectHelper;
-import helpers.TestRunsAndResultsHelper;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
-import io.restassured.response.Response;
 import models.Project;
 import models.Suite;
-import models.TestRuns;
 import org.apache.http.HttpStatus;
-import org.apache.http.protocol.HTTP;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static io.restassured.RestAssured.given;
+
 
 @Epic("Diploma API tests")
 
@@ -34,14 +25,13 @@ public class ApiTest extends BaseApiTest {
 
     public String suiteName = "Test Name";
 
-
     //NFE test
     @Test(priority = 1, description = "NFE Add project test")
     @Feature("NFE tests")
     @Story("NFE test")
     @Description("Create project by Lombok and Builder, expected status code - 200 ")
     public void addProjectNFETest() {
-        TestRuns milestone = TestRuns.builder()
+        Project milestone = Project.builder()
                 .name("Test project")
                 .build();
         Map<String, Object> jsonMap = new HashMap<>();
@@ -88,7 +78,8 @@ public class ApiTest extends BaseApiTest {
     @Story("NFE get  Suite name")
     @Description(" Comparison of current ")
     public void getSuiteName() {
-       suiteHelper.getSuiteName(suiteID,suiteName);
+     String actualSuite =   suiteHelper.getSuiteName(suiteID);
+        Assert.assertEquals(actualSuite,suiteName);
     }
 
     //AEF tests
@@ -125,7 +116,10 @@ public class ApiTest extends BaseApiTest {
     }
 
 
-    @Test(priority = 9)
+    @Test(priority = 9, description = "NFE Delete Project test")
+    @Feature("NFE tests")
+    @Story("NFE delete Project test")
+    @Description("Delete Project, expected status cod - 200")
     public void deleteProject() {
         projectHelper.deleteProject(projectId);
     }
