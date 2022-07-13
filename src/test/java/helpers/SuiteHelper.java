@@ -9,6 +9,8 @@ import org.apache.http.HttpStatus;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 
 public class SuiteHelper {
 
@@ -26,7 +28,7 @@ public class SuiteHelper {
     }
 
     public void getSuites(int projectID, int httpStatus) {
-         given()
+        given()
                 .pathParams("project_id", projectID)
                 .when()
                 .get(Endpoints.GET_SUITES)
@@ -65,12 +67,15 @@ public class SuiteHelper {
                 .log().body();
     }
 
-    public Suite getExactProjectAsObjects(int suiteID) {
-        return given()
+    public void getSuiteName(int suiteID,String suiteName) {
+        given()
                 .pathParams("suite_id", suiteID)
-                .get(Endpoints.GET_SUITE)
+                .when()
+                .post(Endpoints.GET_SUITE)
                 .then()
-                .extract()
-                .as(Suite.class);
+                .assertThat()
+                .statusCode(HttpStatus.SC_OK)
+                .body("name", equalTo(suiteName));
+
     }
 }

@@ -32,8 +32,7 @@ public class ApiTest extends BaseApiTest {
     public int projectId;
     public int suiteID;
 
-    public String suiteName ="Test Name";
-
+    public String suiteName = "Test Name";
 
 
     //NFE test
@@ -62,7 +61,7 @@ public class ApiTest extends BaseApiTest {
         Map<String, Object> jsonMap = new HashMap<>();
         jsonMap.put("name", suite.getName());
 
-        suiteID =  suiteHelper.addSuite(projectId, jsonMap, HttpStatus.SC_OK);
+        suiteID = suiteHelper.addSuite(projectId, jsonMap, HttpStatus.SC_OK);
 
     }
 
@@ -84,27 +83,16 @@ public class ApiTest extends BaseApiTest {
     }
 
 
-
-
-
-    @Test(priority = 5,description = "NFE Get exact project as objects test")
+    @Test(priority = 5, description = "NFE Comparison actual and name")
     @Feature("NFE tests")
-    @Story("NFE get exact project as objects test")
-    @Description("Get exact test run as object ")
-    public void getExactTestRunAsObjectsTest() {
-        Response response = (Response) suiteHelper.getExactProjectAsObjects(suiteID);
-
-        Suite actualRun = new Gson().fromJson(response.getBody().asString(), Suite.class);
-
-        Assert.assertEquals(actualRun.getName(), suiteName);
-
-
+    @Story("NFE get  Suite name")
+    @Description(" Comparison of current ")
+    public void getSuiteName() {
+       suiteHelper.getSuiteName(suiteID,suiteName);
     }
 
-
-
     //AEF tests
-    @Test(priority =6,description = "AEF get project test")
+    @Test(priority = 6, description = "AEF get project test")
     @Feature("AEF tests")
     @Story("AEF  get test")
     @Description("Get project with  don't exist run id, expected status -400")
@@ -112,7 +100,7 @@ public class ApiTest extends BaseApiTest {
         suiteHelper.getSuite(50, HttpStatus.SC_BAD_REQUEST);
     }
 
-    @Test( priority =7,description = "AEF add project test ")
+    @Test(priority = 7, description = "AEF add project test ")
     @Feature("AEF tests")
     @Story("AEF add test")
     @Description("Add project with uncorrected field, expected status - 400")
@@ -132,18 +120,15 @@ public class ApiTest extends BaseApiTest {
     @Feature("NFE tests")
     @Story("NFE delete Suite test")
     @Description("Delete Suite, expected status cod - 200")
-    public void deleteSuite(){
+    public void deleteSuite() {
         suiteHelper.deleteSuite(suiteID);
     }
 
 
-    @Test(priority =9)
-    public void deleteProject(){
+    @Test(priority = 9)
+    public void deleteProject() {
         projectHelper.deleteProject(projectId);
     }
-
-
-
 
 
 }
