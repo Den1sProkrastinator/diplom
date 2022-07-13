@@ -1,32 +1,32 @@
 package pages;
 
+import baseEntities.BasePage;
 import com.codeborne.selenide.SelenideElement;
+import lombok.Getter;
 
 import static com.codeborne.selenide.Selectors.byClassName;
 import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.$;
-
-public  class LoginPage  {
-
-
-    public SelenideElement userName = $(byName("name"));
-    public SelenideElement passWord = $("#password");
-    public SelenideElement buttonEnter = $("#button_primary");
-
-    public SelenideElement errorTextLocator = $(byClassName("error-text"));
+@Getter
+public  class LoginPage extends BasePage {
 
 
 
-    public SelenideElement getErrorTextElement() { return $(errorTextLocator);}
-    public SelenideElement getEmailInput() {
-        return $(userName);
+    private final SelenideElement pageIdentifier = $(".logo-loginpage");
+    private final SelenideElement userName = $(byName("name"));
+    private final SelenideElement passWord = $("#password");
+    private final SelenideElement buttonEnter = $("#button_primary");
+    private final SelenideElement errorTextLocator = $(byClassName("error-text"));
+
+
+
+    @Override
+    protected SelenideElement getPageIdentifier() {
+        return pageIdentifier;
     }
-    public SelenideElement getPswInput() {
-        return $(passWord);
-    }
-    public SelenideElement getLogInButton() {
-        return $(buttonEnter);
-    }
+
+
+
 
 
 

@@ -1,4 +1,4 @@
-package pages;
+package sidepages;
 
 import baseEntities.BasePage;
 import com.codeborne.selenide.SelenideElement;
@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class SideMenuPage extends BasePage {
 
-    private SelenideElement SideBarLocator = $(byId("sidebar"));
+    private final SelenideElement SideBarLocator = $(byId("sidebar"));
 
 
     @Override

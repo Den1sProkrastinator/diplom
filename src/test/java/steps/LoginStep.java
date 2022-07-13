@@ -6,6 +6,7 @@ import pages.DashboardPage;
 import pages.LoginPage;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
 public class LoginStep extends BaseStep {
 
@@ -16,19 +17,20 @@ public class LoginStep extends BaseStep {
         return dashPage;
 
     }
-    public LoginPage incorrectLogin(String user, String pass) {
-        login(user, pass);
+    public LoginPage improperLogin(String fakeUser, String fakePass) {
+        login(fakeUser, fakePass);
 
         return loginPage;
     }
 
 
 
-private void login(String user, String pass){
 
-    loginPage.userName.setValue(ReadProperties.username());
-    loginPage.passWord.setValue(ReadProperties.password());
-    loginPage.buttonEnter.click();
+private void login(String user, String pass){
+    open(ReadProperties.getUrl());
+    loginPage.getUserName().setValue(user);
+    loginPage.getPassWord().setValue(pass);
+    loginPage.getButtonEnter().click();
 
 }
 

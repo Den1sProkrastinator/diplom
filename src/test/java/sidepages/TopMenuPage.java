@@ -1,4 +1,4 @@
-package pages;
+package sidepages;
 
 import baseEntities.BasePage;
 import com.codeborne.selenide.SelenideElement;
@@ -11,7 +11,7 @@ public class TopMenuPage extends BasePage {
 
 
 
-    private SelenideElement TopMenuLocator= $(byClassName("top-panel"));
+    private final SelenideElement TopMenuLocator= $(byClassName("top-panel"));
 
 
     @Override
