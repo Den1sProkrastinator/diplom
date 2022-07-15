@@ -73,13 +73,13 @@ public class ApiTest extends BaseApiTest {
     }
 
 
-    @Test(dependsOnMethods ="addSuite", description = "NFE Comparison actual and name",groups = "main tests",threadPoolSize = 3)
+    @Test(dependsOnMethods ="addSuite", description = "NFE Comparison actual suite name and adjusted suite name ",groups = "main tests",threadPoolSize = 3)
     @Feature("NFE tests")
     @Story("NFE get  Suite name")
     @Description(" Comparison of current ")
     public void getSuiteName() {
-     String actualSuite =   suiteHelper.getSuiteName(suiteID);
-        Assert.assertEquals(actualSuite,suiteName);
+     String actualSuiteName =   suiteHelper.getSuiteName(suiteID);
+        Assert.assertEquals(actualSuiteName,suiteName);
     }
 
     //AEF tests
@@ -91,20 +91,16 @@ public class ApiTest extends BaseApiTest {
         suiteHelper.getSuite(50, HttpStatus.SC_BAD_REQUEST);
     }
 
-    @Test(dependsOnMethods ="addSuite", description = "AEF add project test ",groups = "main tests",threadPoolSize = 3)
+    @Test(dependsOnMethods ="addSuite", description = "AEF add project test ",groups = "main tests",threadPoolSize = 3,expectedExceptions=NullPointerException.class)
     @Feature("AEF tests")
     @Story("AEF add test")
     @Description("Add project with uncorrected field, expected status - 400")
     public void addSuiteAEFTest() {
-        Suite suite = Suite.builder()
-                .name(suiteName)
-                .build();
+
         Map<String, Object> jsonMap = new HashMap<>();
+        jsonMap.put("incorrect field", "incorrect value");
 
-        jsonMap.put("uncorrectedField", suite.getName());
-
-        suiteHelper.addSuite(projectId, jsonMap, HttpStatus.SC_BAD_REQUEST);
-
+       suiteHelper.addSuite(projectId, jsonMap, HttpStatus.SC_BAD_REQUEST);
     }
 
     @Test( description = "NFE Delete Suite test",dependsOnGroups ="main tests" )

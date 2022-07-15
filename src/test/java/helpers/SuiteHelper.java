@@ -12,20 +12,18 @@ import java.util.Map;
 import static io.restassured.RestAssured.given;
 
 
-
 public class SuiteHelper {
 
-    public Suite getSuite(int suiteID, int httpStatus) {
-        return given()
+    public void getSuite(int suiteID, int httpStatus) {
+        given()
                 .pathParam("suite_id", suiteID)
                 .when()
                 .get(Endpoints.GET_SUITE)
                 .then()
                 .assertThat()
                 .statusCode(httpStatus)
-                .log().body()
-                .extract()
-                .as(Suite.class, ObjectMapperType.GSON);
+                .log().body();
+
     }
 
     public void getSuites(int projectID, int httpStatus) {
@@ -70,7 +68,7 @@ public class SuiteHelper {
 
     public String getSuiteName(int suiteID) {
 
-        JsonPath jsonPath= given()
+        JsonPath jsonPath = given()
                 .pathParams("suite_id", suiteID)
                 .when()
                 .get(Endpoints.GET_SUITE)
@@ -80,7 +78,7 @@ public class SuiteHelper {
                 .extract()
                 .jsonPath();
 
-       return jsonPath.getString("name");
+        return jsonPath.getString("name");
     }
 }
 
