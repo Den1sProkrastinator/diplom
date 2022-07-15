@@ -26,7 +26,7 @@ public class ApiTest extends BaseApiTest {
     public String suiteName = "Test Name";
 
     //NFE test
-    @Test(priority = 1, description = "NFE Add project test")
+    @Test(description = "NFE Add project test" ,groups = "main tests")
     @Feature("NFE tests")
     @Story("NFE test")
     @Description("Create project by Lombok and Builder, expected status code - 200 ")
@@ -37,12 +37,10 @@ public class ApiTest extends BaseApiTest {
                 .build();
         Map<String, Object> jsonMap = new HashMap<>();
         jsonMap.put("name", project.getName());
-        projectId = projectHelper.addProject(jsonMap, HttpStatus.SC_OK);
-        System.setProperty("project_id", String.valueOf(projectId));
-        String pp = System.getProperty("project_id");
+        projectId = projectHelper.addProject(jsonMap, HttpStatus.SC_OK);;
     }
 
-    @Test(priority = 2, description = "NFE Add Suite test")
+    @Test(dependsOnMethods ="addProjectNFETest", description = "NFE Add Suite test",groups = "main tests")
     @Feature("NFE tests")
     @Story("NFE add suite test")
     @Description("Create suite with Builder and Lombok , expected status code 200")
@@ -58,7 +56,7 @@ public class ApiTest extends BaseApiTest {
     }
 
 
-    @Test(priority = 3, description = "NFE Get Suite test")
+    @Test(dependsOnMethods ="addSuite", description = "NFE Get Suite test",groups = "main tests",threadPoolSize = 3)
     @Feature("NFE tests")
     @Story("NFE  get Suite test")
     @Description("Get Suite, expected status code - 200 ")
@@ -66,7 +64,7 @@ public class ApiTest extends BaseApiTest {
         suiteHelper.getSuite(suiteID, HttpStatus.SC_OK);
     }
 
-    @Test(priority = 4, description = "NFE Get Suites test")
+    @Test(dependsOnMethods ="addSuite", description = "NFE Get Suites test",groups = "main tests",threadPoolSize = 3)
     @Feature("NFE tests")
     @Story("NFE get Suites test")
     @Description("Get Suites , expected status cod - 200 ")
@@ -75,7 +73,7 @@ public class ApiTest extends BaseApiTest {
     }
 
 
-    @Test(priority = 5, description = "NFE Comparison actual and name")
+    @Test(dependsOnMethods ="addSuite", description = "NFE Comparison actual and name",groups = "main tests",threadPoolSize = 3)
     @Feature("NFE tests")
     @Story("NFE get  Suite name")
     @Description(" Comparison of current ")
@@ -85,7 +83,7 @@ public class ApiTest extends BaseApiTest {
     }
 
     //AEF tests
-    @Test(priority = 6, description = "AEF get project test")
+    @Test(dependsOnMethods ="addSuite", description = "AEF get project test",groups = "main tests",threadPoolSize = 3)
     @Feature("AEF tests")
     @Story("AEF  get test")
     @Description("Get project with  don't exist run id, expected status -400")
@@ -93,7 +91,7 @@ public class ApiTest extends BaseApiTest {
         suiteHelper.getSuite(50, HttpStatus.SC_BAD_REQUEST);
     }
 
-    @Test(priority = 7, description = "AEF add project test ")
+    @Test(dependsOnMethods ="addSuite", description = "AEF add project test ",groups = "main tests",threadPoolSize = 3)
     @Feature("AEF tests")
     @Story("AEF add test")
     @Description("Add project with uncorrected field, expected status - 400")
@@ -109,7 +107,7 @@ public class ApiTest extends BaseApiTest {
 
     }
 
-    @Test(priority = 8, description = "NFE Delete Suite test")
+    @Test( description = "NFE Delete Suite test",dependsOnGroups ="main tests" )
     @Feature("NFE tests")
     @Story("NFE delete Suite test")
     @Description("Delete Suite, expected status cod - 200")
@@ -118,7 +116,7 @@ public class ApiTest extends BaseApiTest {
     }
 
 
-    @Test(priority = 9, description = "NFE Delete Project test")
+    @Test( description = "NFE Delete Project test",dependsOnMethods ="deleteSuite")
     @Feature("NFE tests")
     @Story("NFE delete Project test")
     @Description("Delete Project, expected status cod - 200")
