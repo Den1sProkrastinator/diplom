@@ -2,14 +2,12 @@ package tests.api;
 
 
 import baseEntities.BaseApiTest;
-import com.google.gson.Gson;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import io.restassured.response.Response;
 import models.Project;
-import models.TestRuns;
+import models.Suite;
 import org.apache.http.HttpStatus;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -17,110 +15,110 @@ import org.testng.annotations.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-import static io.restassured.RestAssured.given;
+
 
 @Epic("Diploma API tests")
 
 public class ApiTest extends BaseApiTest {
     public int projectId;
-    public int runID;
-    public String runName;
+    public int suiteID;
 
+    public String suiteName = "Test Name";
 
     //NFE test
-    @Test(priority = 1, description = "NFE Add project test")
+    @Test(description = "NFE Add project test" ,groups = "main tests")
     @Feature("NFE tests")
     @Story("NFE test")
     @Description("Create project by Lombok and Builder, expected status code - 200 ")
     public void addProjectNFETest() {
-        TestRuns milestone = TestRuns.builder()
+        System.out.println();
+        Project project = Project.builder()
                 .name("Test project")
                 .build();
         Map<String, Object> jsonMap = new HashMap<>();
-        jsonMap.put("name", milestone.getName());
-        projectId = projectHelper.addProject(jsonMap, HttpStatus.SC_OK);
-
+        jsonMap.put("name", project.getName());
+        projectId = projectHelper.addProject(jsonMap, HttpStatus.SC_OK);;
     }
 
-    @Test(priority = 2, description = "NFE Add Run test")
+    @Test(dependsOnMethods ="addProjectNFETest", description = "NFE Add Suite test",groups = "main tests")
     @Feature("NFE tests")
-    @Story("NFE add run test")
-    @Description("Create test run with Builder and Lombok , expected status code 200")
-    public void addTestRunNFETest() {
-        TestRuns testRun = TestRuns.builder()
-                .name(runName)
+    @Story("NFE add suite test")
+    @Description("Create suite with Builder and Lombok , expected status code 200")
+    public void addSuite() {
+        Suite suite = Suite.builder()
+                .name(suiteName)
                 .build();
         Map<String, Object> jsonMap = new HashMap<>();
+        jsonMap.put("name", suite.getName());
 
-        jsonMap.put("name", testRun.getName());
-
-        testRunsAndResultsHelper.addRun(39, jsonMap, HttpStatus.SC_OK);
+        suiteID = suiteHelper.addSuite(projectId, jsonMap, HttpStatus.SC_OK);
 
     }
 
-    @Test(priority = 3, description = "NFE Get run test")
+
+    @Test(dependsOnMethods ="addSuite", description = "NFE Get Suite test",groups = "main tests",threadPoolSize = 3)
     @Feature("NFE tests")
-    @Story("NFE  get test run test")
-    @Description("Get test run, expected status code - 200 ")
-    public void getTestRunNFETest() {
-        testRunsAndResultsHelper.getRun(runID, HttpStatus.SC_OK);
+    @Story("NFE  get Suite test")
+    @Description("Get Suite, expected status code - 200 ")
+    public void getSuiteNFETest() {
+        suiteHelper.getSuite(suiteID, HttpStatus.SC_OK);
     }
 
-    @Test(priority = 4, description = "NFE Get Runs test")
+    @Test(dependsOnMethods ="addSuite", description = "NFE Get Suites test",groups = "main tests",threadPoolSize = 3)
     @Feature("NFE tests")
-    @Story("NFE get runs test")
-    @Description("Get test runs , expected status cod - 200 ")
-    public void getTestRunsNFETest() {
-        testRunsAndResultsHelper.getRuns(projectId, HttpStatus.SC_OK);
+    @Story("NFE get Suites test")
+    @Description("Get Suites , expected status cod - 200 ")
+    public void getSuitesNFETest() {
+        suiteHelper.getSuites(projectId, HttpStatus.SC_OK);
     }
 
 
-    @Test(description = "NFE Get exact project as objects test")
+    @Test(dependsOnMethods ="addSuite", description = "NFE Comparison actual suite name and adjusted suite name ",groups = "main tests",threadPoolSize = 3)
     @Feature("NFE tests")
-    @Story("NFE get exact project as objects test")
-    @Description("Get exact test run as object ")
-    public void getExactTestRunAsObjectsTest() {
-        Response response = (Response) testRunsAndResultsHelper.getExactProjectAsObjects(runID);
-
-        TestRuns actualRun = new Gson().fromJson(response.getBody().asString(), TestRuns.class);
-
-        Assert.assertEquals(actualRun.getName(), runName);
-
-
+    @Story("NFE get  Suite name")
+    @Description(" Comparison of current ")
+    public void getSuiteName() {
+     String actualSuiteName =   suiteHelper.getSuiteName(suiteID);
+        Assert.assertEquals(actualSuiteName,suiteName);
     }
-
-    @Test(priority = 5, description = "NFE Delete run test")
-    @Feature("NFE tests")
-    @Story("NFE delete run test")
-    @Description("Delete test run, expected status cod - 200")
-    public void deleteRunNFETest() {
-        testRunsAndResultsHelper.deleteRun(runID);
-    }
-
 
     //AEF tests
-    @Test(description = "AEF get project test")
+    @Test(dependsOnMethods ="addSuite", description = "AEF get project test",groups = "main tests",threadPoolSize = 3)
     @Feature("AEF tests")
     @Story("AEF  get test")
     @Description("Get project with  don't exist run id, expected status -400")
-    public void getTestRunAEFTest() {
-        testRunsAndResultsHelper.getRun(runID, HttpStatus.SC_BAD_REQUEST);
+    public void getSuiteAEFTest() {
+        suiteHelper.getSuite(50, HttpStatus.SC_BAD_REQUEST);
     }
 
-    @Test(description = "AEF add project test ")
+    @Test(dependsOnMethods ="addSuite", description = "AEF add project test ",groups = "main tests",threadPoolSize = 3,expectedExceptions=NullPointerException.class)
     @Feature("AEF tests")
     @Story("AEF add test")
     @Description("Add project with uncorrected field, expected status - 400")
-    public void addTestRunAEFTest(){
-        TestRuns testRun = TestRuns.builder()
-                .name(runName)
-                .build();
+    public void addSuiteAEFTest() {
+
         Map<String, Object> jsonMap = new HashMap<>();
+        jsonMap.put("incorrect field", "incorrect value");
 
-        jsonMap.put("uncorrectedField", testRun.getName());
-
-        testRunsAndResultsHelper.addRun(projectId, jsonMap, HttpStatus.SC_BAD_REQUEST);
-
+       suiteHelper.addSuite(projectId, jsonMap, HttpStatus.SC_BAD_REQUEST);
     }
+
+    @Test( description = "NFE Delete Suite test",dependsOnGroups ="main tests" )
+    @Feature("NFE tests")
+    @Story("NFE delete Suite test")
+    @Description("Delete Suite, expected status cod - 200")
+    public void deleteSuite() {
+        suiteHelper.deleteSuite(suiteID);
+    }
+
+
+    @Test( description = "NFE Delete Project test",dependsOnMethods ="deleteSuite")
+    @Feature("NFE tests")
+    @Story("NFE delete Project test")
+    @Description("Delete Project, expected status cod - 200")
+    public void deleteProject() {
+        projectHelper.deleteProject(projectId);
+    }
+
 
 }

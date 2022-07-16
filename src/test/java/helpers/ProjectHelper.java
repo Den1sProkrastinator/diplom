@@ -27,6 +27,16 @@ public class ProjectHelper {
 
         return jsonPath.getInt("id");
 
+    }
 
+    public void deleteProject(int projectId) {
+
+        given()
+                .when()
+                .pathParams("project_id", projectId)
+                .post(Endpoints.DELETE_PROJECT)
+                .then()
+                .statusCode(HttpStatus.SC_OK)
+                .log().body();
     }
 }
