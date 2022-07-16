@@ -21,8 +21,8 @@ public class DashboardPage extends BasePage {
             = $(byXpath("//div[contains(@class, 'content-header-title') and contains(text(), 'All Projects')]"));
 
     private final SelenideElement addProjectButton = $(byClassName("sidebar-button"));
-    private SelenideElement IconHeaderTwitter = $x("//div[@class='icon-header-twitter')]");
-    private SelenideElement IconTwitterText = $x("//div[@class='tooltip']");
+    private SelenideElement iconHeaderTwitter = $x("//div[@class='icon-header-twitter')]");
+    private SelenideElement iconTwitterText = $x("//div[@class='tooltip']");
 
 
 

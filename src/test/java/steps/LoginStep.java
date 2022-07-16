@@ -60,10 +60,7 @@ private void login(String user, String pass){
 
     }
 
-    public LoginPage logout() {
 
-        return loginPage;
-    }
 
 
 }

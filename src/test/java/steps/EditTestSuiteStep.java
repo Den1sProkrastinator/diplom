@@ -14,13 +14,7 @@ public class EditTestSuiteStep extends BaseStep {
         fillTestSuite(testSuiteName, testSuiteDescription);
         return testSuiteOverviewPage;
     }
-/*
-    public TestSuiteOverviewPage uploadSuite() {
-        File image = new File("src/test/resources/screen.jpg");
 
-        editTestSuitePage.getButtonAttachmentLocator().uploadFile(image);
-        editTestSuitePage.getSaveTestSuiteButtonLocator().click();
-        */
     public TestSuiteOverviewPage deleteTestSuite(String testSuite) {
         editTestSuitePage.DeleteTestSuiteButtonLocator(testSuite).click();
         editTestSuitePage.getCheckBoxButtonLocator().click();
