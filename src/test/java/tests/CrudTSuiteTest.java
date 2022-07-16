@@ -74,6 +74,7 @@ public class CrudTSuiteTest extends BaseTest {
 
     @Test
     public void readAfterUpdateTest() {
+        loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
         dashboardStep.openProject("aefae");
         projectOverviewStep.selectSuite();
         testSuitesStep.openTestSuite("Second Suite");
