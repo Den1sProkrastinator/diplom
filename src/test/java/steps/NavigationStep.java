@@ -1,14 +1,21 @@
 package steps;
 
 import baseEntities.BaseStep;
-import pages.ProjectsPage;
+import pages.DashboardPage;
 
 public class NavigationStep extends BaseStep {
+    public DashboardPage navigateToDashboardFromTestSuiteOverviewPage() {
+        testSuiteOverviewPage.getReturnToDashboardButtonLocator().click();
+        return dashPage;
+    }
 
+    public DashboardPage navigateToDashboardFromEditTestSuitePage() {
+        editTestSuitePage.getReturnToDashboardPageButtonLocator().click();
+        return dashPage;
+    }
 
-
-    public ProjectsPage navigateToProjectsPage() {
-        projectsPage.openPageByUrl();
-        return projectsPage;
+    public DashboardPage navigateToDashboardFromProjectOverviewPage() {
+        projectOverviewPage.getReturnToDashboardButtonLocator().click();
+        return dashPage;
     }
 }
