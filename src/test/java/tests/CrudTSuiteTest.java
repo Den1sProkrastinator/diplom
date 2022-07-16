@@ -27,21 +27,23 @@ public class CrudTSuiteTest extends BaseTest {
 
     }
     @Description("read functionality")
-    @Test(dependsOnMethods = "createTest")
+    @Test
 
     public void readTest() {
-        dashboardStep.openProject("aefae");
+        loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
+        dashboardStep.openProject("Second");
         projectOverviewStep.selectSuite();
         testSuitesStep.openTestSuite("First Suite");
         testSuiteOverviewStep.selectEditTestSuite();
         editTestSuiteStep.getTestSuiteName()
                 .shouldHave(value("First Suite"));
         editTestSuiteStep.getTestSuiteDescription()
-                .shouldHave(text("test purposes"));
+                .shouldHave(text("aefafaefaef"));
     }
-    @Description("update functionality")
+    @Description("update functionality and upload picture")
     @Test
-    public void updateTest() {
+    public void updateandUploadTest() {
+        loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
         dashboardStep.openProject("aefae");
         projectOverviewStep.selectSuite();
         testSuitesStep.openTestSuite("First Suite");
@@ -54,8 +56,9 @@ public class CrudTSuiteTest extends BaseTest {
 
 
     @Description("delete functionality")
-    @Test(dependsOnMethods = "readAfterUpdateTest")
+    @Test
     public void deleteTest() {
+        loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
         dashboardStep.openProject("aefae");
         projectOverviewStep.selectSuite();
         testSuitesStep.openTestSuite("Second Suite");
@@ -69,7 +72,7 @@ public class CrudTSuiteTest extends BaseTest {
 
 
 
-    @Test(dependsOnMethods = "updateTest")
+    @Test
     public void readAfterUpdateTest() {
         dashboardStep.openProject("aefae");
         projectOverviewStep.selectSuite();
