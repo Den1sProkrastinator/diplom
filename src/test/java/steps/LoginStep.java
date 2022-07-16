@@ -2,6 +2,7 @@ package steps;
 
 import baseEntities.BaseStep;
 import core.ReadProperties;
+import org.apache.commons.lang.RandomStringUtils;
 import pages.DashboardPage;
 import pages.LoginPage;
 
@@ -33,6 +34,31 @@ private void login(String user, String pass){
     loginPage.getButtonEnter().click();
 
 }
+
+    public LoginPage boundaries251() {
+        String random251 = RandomStringUtils.randomAlphabetic(251);
+        login(random251, ReadProperties.password());
+
+        return loginPage;
+
+    }
+
+
+    public LoginPage boundaries250() {
+    String random250 = RandomStringUtils.randomAlphabetic(250);
+    login(ReadProperties.username(), random250);
+        return loginPage;}
+
+
+    public LoginPage boundaries249() {
+
+
+        String random249= RandomStringUtils.randomAlphabetic(249);
+        login(random249, ReadProperties.password());
+        return loginPage;
+
+
+    }
 
     public LoginPage logout() {
 

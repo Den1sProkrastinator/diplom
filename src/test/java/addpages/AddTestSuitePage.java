@@ -4,6 +4,8 @@ import baseEntities.BasePage;
 import com.codeborne.selenide.SelenideElement;
 import lombok.Getter;
 
+import static com.codeborne.selenide.Selectors.byXpath;
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
 @Getter
@@ -16,6 +18,7 @@ public class AddTestSuitePage extends BasePage {
     private SelenideElement cancelButtonLocator = $x("//div//button[@id='accept']/following-sibling::a");
     private SelenideElement attachmentButtonLocator = $x("//div[@id='entityAttachmentListEmptyIcon']");
     private SelenideElement attachFileButtonLocator = $x("//div[@id='libraryAttachmentsAddItem']");
+
 
     //corpuscular methods
     @Override

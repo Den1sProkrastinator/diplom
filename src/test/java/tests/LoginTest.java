@@ -1,21 +1,18 @@
 package tests;
+
 import baseEntities.BaseTest;
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.*;
-import com.codeborne.selenide.SelenideElement;
 import core.ReadProperties;
-import org.testng.Assert;
+import io.qameta.allure.Description;
 import org.testng.annotations.Test;
-import pages.LoginPage;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.open;
 
 
 public class LoginTest extends BaseTest {
 
 
-
+    @Description("login with reliable data")
     @Test
 
     public void successLoginTest(){
@@ -27,14 +24,14 @@ public class LoginTest extends BaseTest {
 
 
     }
-
+    @Description("login with fake email")
     @Test()
     public void fakeEmailTest() {
         loginStep.improperLogin("Nikita", ReadProperties.password())
                 .getErrorTextLocator()
                 .shouldHave(text("Email/Login or Password is incorrect. Please try again."));
     }
-
+    @Description("login with fake password")
     @Test()
     public void fakePassTest() {
         loginStep.improperLogin(ReadProperties.username(), "deathdeathdeath")
@@ -42,4 +39,29 @@ public class LoginTest extends BaseTest {
                 .shouldHave(text("Email/Login or Password is incorrect. Please try again."));
     }
 
-}
+
+
+
+
+    @Description("boundary login pass")
+    @Test
+    public void boundaryTest() {
+
+        loginStep.boundaries251().getErrorTextLocator().shouldHave(text("Field Email/User is too long (250 characters at most)."));
+        loginStep.boundaries250().getErrorTextLocator().shouldHave(text("Email/Login or Password is incorrect. Please try again."));
+        loginStep.boundaries249().getErrorTextLocator().shouldHave(text("Email/Login or Password is incorrect. Please try again."));
+
+
+    }
+
+
+
+
+
+
+
+
+
+    }
+
+

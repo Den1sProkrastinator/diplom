@@ -2,20 +2,22 @@ package tests;
 
 import baseEntities.BaseTest;
 import core.ReadProperties;
+import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.value;
+import static com.codeborne.selenide.Selenide.open;
 
-public class AddTSuiteTest extends BaseTest {
+public class CrudTSuiteTest extends BaseTest {
 
 
 
-
+    @Description("create functionality")
     @Test
-    public void createTestSuiteTest() {
+    public void createTest() {
         loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
-        dashboardStep.openProject("First");
+        dashboardStep.openProject("aefae");
         projectOverviewStep.selectSuite();
         testSuitesStep.addTestSuite();
         addTestSuiteStep.createTestSuite("First Suite", "test purposes")
@@ -24,10 +26,11 @@ public class AddTSuiteTest extends BaseTest {
         navigationStep.navigateToDashboardFromTestSuiteOverviewPage();
 
     }
+    @Description("read functionality")
+    @Test(dependsOnMethods = "createTest")
 
-    @Test(dependsOnMethods = "createTestSuiteTest")
-    public void readTestSuiteAfterCreateTest() {
-        dashboardStep.openProject("First");
+    public void readTest() {
+        dashboardStep.openProject("aefae");
         projectOverviewStep.selectSuite();
         testSuitesStep.openTestSuite("First Suite");
         testSuiteOverviewStep.selectEditTestSuite();
@@ -36,10 +39,10 @@ public class AddTSuiteTest extends BaseTest {
         editTestSuiteStep.getTestSuiteDescription()
                 .shouldHave(text("test purposes"));
     }
-
+    @Description("update functionality")
     @Test
-    public void updateTestSuiteTest() {
-        dashboardStep.openProject("First");
+    public void updateTest() {
+        dashboardStep.openProject("aefae");
         projectOverviewStep.selectSuite();
         testSuitesStep.openTestSuite("First Suite");
         testSuiteOverviewStep.selectEditTestSuite();
@@ -49,9 +52,26 @@ public class AddTSuiteTest extends BaseTest {
         navigationStep.navigateToDashboardFromTestSuiteOverviewPage();
     }
 
-    @Test(dependsOnMethods = "updateTestSuiteTest")
-    public void readTestSuiteAfterUpdateTest() {
-        dashboardStep.openProject("First");
+
+    @Description("delete functionality")
+    @Test(dependsOnMethods = "readAfterUpdateTest")
+    public void deleteTest() {
+        dashboardStep.openProject("aefae");
+        projectOverviewStep.selectSuite();
+        testSuitesStep.openTestSuite("Second Suite");
+        testSuiteOverviewStep.selectEditTestSuite();
+        editTestSuiteStep.deleteTestSuite("Second Suite")
+                .getDeleteMessageLocator()
+                .shouldHave(text("Successfully deleted the test suite."));
+    }
+
+
+
+
+
+    @Test(dependsOnMethods = "updateTest")
+    public void readAfterUpdateTest() {
+        dashboardStep.openProject("aefae");
         projectOverviewStep.selectSuite();
         testSuitesStep.openTestSuite("Second Suite");
         testSuiteOverviewStep.selectEditTestSuite();
@@ -62,14 +82,10 @@ public class AddTSuiteTest extends BaseTest {
         navigationStep.navigateToDashboardFromEditTestSuitePage();
     }
 
-    @Test(dependsOnMethods = "readTestSuiteAfterUpdateTest")
-    public void deleteTestSuiteTest() {
-        dashboardStep.openProject("First");
-        projectOverviewStep.selectSuite();
-        testSuitesStep.openTestSuite("Second Suite");
-        testSuiteOverviewStep.selectEditTestSuite();
-        editTestSuiteStep.deleteTestSuite("Second Suite")
-                .getDeleteMessageLocator()
-                .shouldHave(text("Successfully deleted the test suite."));
-    }
+
+
+
+
+
+
 }

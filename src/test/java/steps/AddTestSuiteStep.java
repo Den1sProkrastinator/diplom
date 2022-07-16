@@ -14,4 +14,6 @@ public class AddTestSuiteStep extends BaseStep {
         addTestSuitePage.getDescriptionTestSuiteInputLocator().setValue(testSuiteDescription);
         addTestSuitePage.getAddTestSuiteButtonLocator().click();
     }
+
+
 }

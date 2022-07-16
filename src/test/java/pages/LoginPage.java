@@ -7,6 +7,8 @@ import lombok.Getter;
 import static com.codeborne.selenide.Selectors.byClassName;
 import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
+
 @Getter
 public  class LoginPage extends BasePage {
 
@@ -19,6 +21,11 @@ public  class LoginPage extends BasePage {
     private final SelenideElement errorTextLocator = $(byClassName("error-text"));
 
 
+    private SelenideElement errorLocator = $x("//div[text()='Field Email/User is too long (250 characters at most).']");
+
+    public SelenideElement getErrorTextLocator() {
+        return errorTextLocator;
+    }
 
     @Override
     protected SelenideElement getPageIdentifier() {

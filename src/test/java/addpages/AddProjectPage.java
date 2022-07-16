@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 @Getter
 public class AddProjectPage extends BasePage {
-    //locators
+
     private final SelenideElement pageIdentifier = $x("//div[contains(text(),'Add Project')]");
     private final SelenideElement nameInputLocator = $("input.form-control#name");
     private final SelenideElement announcementInputLocator = $("textarea#announcement");
@@ -19,7 +19,7 @@ public class AddProjectPage extends BasePage {
     private final SelenideElement projectCompletedCheckBoxButtonLocator = $("is_completed");
     private final SelenideElement addProjectButtonLocator = $("#accept");
 
-    //corpuscular methods
+
     @Override
     protected SelenideElement getPageIdentifier() {
         return pageIdentifier;
