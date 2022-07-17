@@ -37,7 +37,7 @@ public class ApiTest extends BaseApiTest {
                 .build();
         Map<String, Object> jsonMap = new HashMap<>();
         jsonMap.put("name", project.getName());
-        projectId = projectHelper.addProject(jsonMap, HttpStatus.SC_OK);;
+        projectId = projectHelper.addProject(jsonMap, HttpStatus.SC_OK);
     }
 
     @Test(dependsOnMethods ="addProjectNFETest", description = "NFE Add Suite test",groups = "main tests")
