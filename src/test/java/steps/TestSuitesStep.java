@@ -1,7 +1,7 @@
 package steps;
 
 import baseEntities.BaseStep;
-import addpages.AddTestSuitePage;
+import pages.AddTestSuitePage;
 import pages.TestSuiteOverviewPage;
 
 public class TestSuitesStep extends BaseStep {

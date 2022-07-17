@@ -6,8 +6,6 @@ import pages.TestSuiteOverviewPage;
 
 import java.io.File;
 
-import static com.codeborne.selenide.Condition.text;
-
 public class EditTestSuiteStep extends BaseStep {
 
     public TestSuiteOverviewPage editTestSuite(String testSuiteName, String testSuiteDescription) {
@@ -27,9 +25,19 @@ public class EditTestSuiteStep extends BaseStep {
         editTestSuitePage.getDescriptionTestSuiteLocator().click();
         editTestSuitePage.getNameTestSuiteInputLocator().setValue(testSuiteName);
         editTestSuitePage.getDescriptionTestSuiteLocator().setValue(testSuiteDescription);
+        editTestSuitePage.getSaveTestSuiteButtonLocator().click();
+    }
+
+    public TestSuiteOverviewPage uploadFile(String testSuiteName, String testSuiteDescription){
+
+        editTestSuitePage.getDescriptionTestSuiteLocator().click();
+        editTestSuitePage.getNameTestSuiteInputLocator().setValue(testSuiteName);
+        editTestSuitePage.getDescriptionTestSuiteLocator().setValue(testSuiteDescription);
         File image = new File("src/test/resources/screen1.jpg");
         editTestSuitePage.getButtonAttachmentLocator().uploadFile(image);
         editTestSuitePage.getSaveTestSuiteButtonLocator().click();
+
+        return testSuiteOverviewPage;
     }
 
 

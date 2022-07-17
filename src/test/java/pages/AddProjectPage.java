@@ -1,4 +1,4 @@
-package addpages;
+package pages;
 
 import baseEntities.BasePage;
 import com.codeborne.selenide.SelenideElement;

@@ -42,7 +42,7 @@ public class CrudTSuiteTest extends BaseTest {
     }
     @Description("update functionality and upload picture")
     @Test
-    public void updateandUploadTest() {
+    public void updateTest() {
         loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
         dashboardStep.openProject("aefae");
         projectOverviewStep.selectSuite();

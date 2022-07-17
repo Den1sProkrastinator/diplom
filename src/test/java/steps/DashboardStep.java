@@ -1,11 +1,10 @@
 package steps;
 
 import baseEntities.BaseStep;
-import addpages.AddProjectPage;
+import pages.AddProjectPage;
 import lombok.Getter;
 import pages.ProjectOverviewPage;
 
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.actions;
 import static com.codeborne.selenide.Selenide.open;
 

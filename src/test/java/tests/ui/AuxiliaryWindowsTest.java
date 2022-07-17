@@ -34,6 +34,20 @@ public class AuxiliaryWindowsTest extends BaseTest {
 
     }
 
+    @Description("upload picture")
+    @Test
+    public void UploadTest() {
+        loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
+        dashboardStep.openProject("aefae");
+        projectOverviewStep.selectSuite();
+        testSuitesStep.openTestSuite("First Suite");
+        testSuiteOverviewStep.selectEditTestSuite();
+        editTestSuiteStep.uploadFile("First Suite", "uploading...")
+                .getUpdateMessageLocator()
+                .shouldHave(text("Successfully updated the test suite."));
+        navigationStep.navigateToDashboardFromTestSuiteOverviewPage();
+    }
+
 
 
 }
