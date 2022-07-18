@@ -30,6 +30,7 @@ public class ApiTest extends BaseApiTest {
     @Feature("NFE tests")
     @Story("NFE test")
     @Description("Create project by Lombok and Builder, expected status code - 200 ")
+
     public void addProjectNFETest() {
         System.out.println();
         Project project = Project.builder()
