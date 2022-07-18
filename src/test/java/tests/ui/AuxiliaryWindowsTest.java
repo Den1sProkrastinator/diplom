@@ -5,6 +5,7 @@ import core.ReadProperties;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Condition.text;
@@ -13,6 +14,7 @@ import static com.codeborne.selenide.Condition.text;
 public class AuxiliaryWindowsTest extends BaseTest {
 
     @Description("dialog window function delete  test")
+    @Story("Delete test suit ")
     @Test(description = "dialog window delete test ")
     public void dialogWindowDeleteTest() {
         loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
@@ -27,6 +29,7 @@ public class AuxiliaryWindowsTest extends BaseTest {
     }
 
     @Description("Popup validation")
+    @Story("Popup exists")
     @Test(description = "popup test")
     public void popupTest() {
         loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
@@ -34,7 +37,8 @@ public class AuxiliaryWindowsTest extends BaseTest {
 
     }
 
-    @Description("upload picture")
+    @Description("Upload picture ")
+    @Story("Upload file")
     @Test(description ="upload test")
     public void uploadTest() {
         loginStep.successLogin(ReadProperties.username(), ReadProperties.password());

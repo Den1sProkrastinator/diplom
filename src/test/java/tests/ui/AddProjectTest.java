@@ -15,7 +15,7 @@ import static com.codeborne.selenide.Condition.value;
 public class AddProjectTest extends BaseTest {
 
     @Description("Create project")
-    @Test(description = "add project test")
+    @Test(description = "Add project test")
     @Story("Create project")
     public void addProjectTest() {
         loginStep.successLogin(ReadProperties.username(), ReadProperties.password());

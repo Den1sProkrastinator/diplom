@@ -5,6 +5,7 @@ import core.ReadProperties;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Condition.text;
@@ -13,9 +14,10 @@ import static com.codeborne.selenide.Selenide.open;
 @Epic("Diploma UI tests")
 @Feature("Crud  tests")
 public class CrudTSuiteTest extends BaseTest {
-    @Description("create functionality")
-    @Test(description = "create test")
-    public void createTest() {
+    @Description("Create functionality")
+    @Story("Create test suite with description ")
+    @Test(description = "create  suite test")
+    public void createSuiteTest() {
         loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
         dashboardStep.openProject("aefae");
         projectOverviewStep.selectSuite();
@@ -27,9 +29,10 @@ public class CrudTSuiteTest extends BaseTest {
 
     }
 
-    @Description("read functionality")
+    @Description("Read functionality")
+    @Story("Open suite")
     @Test(description = "read test")
-    public void readTest() {
+    public void readSuiteTest() {
         loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
         dashboardStep.openProject("Second");
         projectOverviewStep.selectSuite();
@@ -42,8 +45,9 @@ public class CrudTSuiteTest extends BaseTest {
     }
 
     @Description("update functionality and upload picture")
+    @Story("Edit description")
     @Test(description = "update test")
-    public void updateTest() {
+    public void updateSuiteTest() {
         loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
         dashboardStep.openProject("aefae");
         projectOverviewStep.selectSuite();
@@ -57,8 +61,9 @@ public class CrudTSuiteTest extends BaseTest {
 
 
     @Description("delete functionality")
+    @Story("Delete suite ")
     @Test(description = "delete test")
-    public void deleteTest() {
+    public void deleteSuiteTest() {
         loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
         dashboardStep.openProject("aefae");
         projectOverviewStep.selectSuite();
@@ -68,9 +73,10 @@ public class CrudTSuiteTest extends BaseTest {
                 .getDeleteMessageLocator()
                 .shouldHave(text("Successfully deleted the test suite."));
     }
-
-    @Test(description = "")
-    public void readAfterUpdateTest() {
+    @Description("Read suite after update ")
+    @Story("Read updated suite")
+    @Test(description = "read suite after update test")
+    public void readSuiteAfterUpdateTest() {
         loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
         dashboardStep.openProject("aefae");
         projectOverviewStep.selectSuite();
@@ -82,11 +88,5 @@ public class CrudTSuiteTest extends BaseTest {
                 .shouldHave(text("qegegqegqeg"));
         navigationStep.navigateToDashboardFromEditTestSuitePage();
     }
-
-
-
-
-
-
 
 }

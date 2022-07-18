@@ -6,6 +6,7 @@ import core.ReadProperties;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Condition.text;
@@ -16,8 +17,7 @@ public class LoginTest extends BaseTest {
 
 
     @Description("login with reliable data")
-    @Test
-
+    @Test(description = "success login test")
     public void successLoginTest(){
 
         loginStep.successLogin(ReadProperties.username(),ReadProperties.password())
@@ -26,21 +26,24 @@ public class LoginTest extends BaseTest {
 
     }
     @Description("login with fake email")
-    @Test()
+    @Story("Negative test")
+    @Test(description = "fake email test")
     public void fakeEmailTest() {
         loginStep.improperLogin("Nikita", ReadProperties.password())
                 .getErrorTextLocator()
                 .shouldHave(text("Email/Login or Password is incorrect. Please try again."));
     }
     @Description("login with fake password")
-    @Test()
+    @Story("Negative test")
+    @Test(description = "fake pass test")
     public void fakePassTest() {
         loginStep.improperLogin(ReadProperties.username(), "deathdeathdeath")
                 .getErrorTextLocator()
                 .shouldHave(text("Email/Login or Password is incorrect. Please try again."));
     }
     @Description("boundary login pass")
-    @Test
+    @Story("Boundary test")
+    @Test(description = "boundary test")
     public void boundaryTest() {
 
         loginStep.boundaries251().getErrorTextLocator().shouldHave(text("Field Email/User is too long (250 characters at most)."));
