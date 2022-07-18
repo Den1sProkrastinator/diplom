@@ -31,14 +31,14 @@ public class CrudTSuiteTest extends BaseTest {
     @Test(description = "read test")
     public void readTest() {
         loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
-        dashboardStep.openProject("aefae");
+        dashboardStep.openProject("Second");
         projectOverviewStep.selectSuite();
         testSuitesStep.openTestSuite("First Suite");
         testSuiteOverviewStep.selectEditTestSuite();
         editTestSuiteStep.getTestSuiteName()
                 .shouldHave(value("First Suite"));
         editTestSuiteStep.getTestSuiteDescription()
-                .shouldHave(text("test purposes"));
+                .shouldHave(text("aefafaefaef"));
     }
 
     @Description("update functionality and upload picture")
