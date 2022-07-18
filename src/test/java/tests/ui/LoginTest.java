@@ -24,8 +24,6 @@ public class LoginTest extends BaseTest {
                 .getPageIdentifier()
                 .shouldBe(Condition.exist);
 
-
-
     }
     @Description("login with fake email")
     @Test()
@@ -41,11 +39,6 @@ public class LoginTest extends BaseTest {
                 .getErrorTextLocator()
                 .shouldHave(text("Email/Login or Password is incorrect. Please try again."));
     }
-
-
-
-
-
     @Description("boundary login pass")
     @Test
     public void boundaryTest() {
@@ -54,16 +47,7 @@ public class LoginTest extends BaseTest {
         loginStep.boundaries250().getErrorTextLocator().shouldHave(text("Email/Login or Password is incorrect. Please try again."));
         loginStep.boundaries249().getErrorTextLocator().shouldHave(text("Email/Login or Password is incorrect. Please try again."));
 
-
     }
-
-
-
-
-
-
-
-
 
     }
 

@@ -30,7 +30,6 @@ public class EditTestSuitePage extends BasePage {
         return pageIdentifier;
     }
 
-
     public SelenideElement DeleteTestSuiteButtonLocator(String testSuite) {
         return deleteButtonLocator;
     }

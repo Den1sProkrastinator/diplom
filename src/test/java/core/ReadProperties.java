@@ -7,7 +7,6 @@ public class ReadProperties {
     private static final Properties properties;
 
 
-
     static {
         properties = new Properties();
         try {
@@ -24,7 +23,6 @@ public class ReadProperties {
     public static String browserName() {
         return properties.getProperty("browser");
     }
-
 
 
     public static String username() {

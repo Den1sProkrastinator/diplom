@@ -24,9 +24,6 @@ public class LoginStep extends BaseStep {
         return loginPage;
     }
 
-
-
-
 private void login(String user, String pass){
     open(ReadProperties.getUrl());
     loginPage.getUserName().setValue(user);
@@ -48,7 +45,6 @@ private void login(String user, String pass){
     String random250 = RandomStringUtils.randomAlphabetic(250);
     login(ReadProperties.username(), random250);
         return loginPage;}
-
 
     public LoginPage boundaries249() {
 

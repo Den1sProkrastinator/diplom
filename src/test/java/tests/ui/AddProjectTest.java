@@ -16,7 +16,7 @@ public class AddProjectTest extends BaseTest {
 
     @Description("Create project")
     @Test(description = "add project test")
-    @Story("add project")
+    @Story("Create project")
     public void addProjectTest() {
         loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
         dashboardStep.successAddProject();

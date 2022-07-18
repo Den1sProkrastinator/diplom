@@ -13,10 +13,6 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class DashboardPage extends BasePage {
 
-
-
-
-
     private final SelenideElement pageIdentifier
             = $(byXpath("//div[contains(@class, 'content-header-title') and contains(text(), 'All Projects')]"));
 
@@ -24,14 +20,10 @@ public class DashboardPage extends BasePage {
     private SelenideElement iconHeaderTwitter = $x("//div[@class='icon-header-twitter')]");
     private SelenideElement iconTwitterText = $x("//div[@class='tooltip']");
 
-
-
-
     @Override
     public SelenideElement getPageIdentifier() {
         return pageIdentifier;
     }
-
 
     public SelenideElement openProjectByName(String projectName) {
         String openProjectByName = "//a[text()='First']";

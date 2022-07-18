@@ -19,8 +19,6 @@ public class AddTestSuitePage extends BasePage {
     private SelenideElement attachmentButtonLocator = $x("//div[@id='entityAttachmentListEmptyIcon']");
     private SelenideElement attachFileButtonLocator = $x("//div[@id='libraryAttachmentsAddItem']");
 
-
-  
     @Override
     protected SelenideElement getPageIdentifier() {
         return pageIdentifier;

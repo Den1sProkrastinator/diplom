@@ -14,8 +14,6 @@ import static com.codeborne.selenide.Selenide.open;
 @Feature("Crud  tests")
 public class CrudTSuiteTest extends BaseTest {
 
-
-
     @Description("create functionality")
     @Test(description = "create test")
     public void createTest() {
@@ -71,10 +69,6 @@ public class CrudTSuiteTest extends BaseTest {
                 .getDeleteMessageLocator()
                 .shouldHave(text("Successfully deleted the test suite."));
     }
-
-
-
-
 
     @Test(description = "")
     public void readAfterUpdateTest() {

@@ -26,7 +26,6 @@ public class DashboardStep extends BaseStep {
         dashPage.getAddProjectButton().click();
     }
 
-
     public void popupText(){
         actions()
                 .moveToElement(dashPage.getIconHeaderTwitter())

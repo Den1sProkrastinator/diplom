@@ -28,8 +28,6 @@ public class AuxiliaryWindowsTest extends BaseTest {
 
     }
 
-
-
     @Description("Popup validation")
     @Test(description = "popup test")
     public void popupTest() {
@@ -37,8 +35,6 @@ public class AuxiliaryWindowsTest extends BaseTest {
         dashboardStep.popupText();
 
     }
-
-
 
     @Description("upload picture")
     @Test(description ="upload test")

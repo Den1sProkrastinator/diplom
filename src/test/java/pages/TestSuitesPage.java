@@ -18,8 +18,6 @@ public class TestSuitesPage extends BasePage {
         return pageIdentifier;
     }
 
-
-
     public SelenideElement OpenTestSuiteByNameLocator(String testSuiteName) {
 
         String openTestSuiteByNameLocator = "//a[text()='First']";
