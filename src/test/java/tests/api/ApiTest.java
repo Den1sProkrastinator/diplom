@@ -102,6 +102,7 @@ public class ApiTest extends BaseApiTest {
        suiteHelper.addSuite(projectId, jsonMap, HttpStatus.SC_BAD_REQUEST);
     }
 
+
     @Test( description = "NFE Delete Suite test",dependsOnGroups ="main tests" )
     @Feature("NFE tests")
     @Story("Delete Suite test")
