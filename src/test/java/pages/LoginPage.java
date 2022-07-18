@@ -17,6 +17,7 @@ public  class LoginPage extends BasePage {
     private final SelenideElement passWord = $("#password");
     private final SelenideElement buttonEnter = $("#button_primary");
     private final SelenideElement errorTextLocator = $(byClassName("error-text"));
+    private final SelenideElement emptyTextLocator = $x("//div[contains(text(),'Email/Login is required.')]");
 
     private SelenideElement errorLocator = $x("//div[text()='Field Email/User is too long (250 characters at most).']");
 

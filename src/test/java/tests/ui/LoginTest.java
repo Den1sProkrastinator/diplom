@@ -33,6 +33,17 @@ public class LoginTest extends BaseTest {
                 .getErrorTextLocator()
                 .shouldHave(text("Email/Login or Password is incorrect. Please try again."));
     }
+
+    @Description("login with empty data")
+    @Story("Negative test")
+    @Test(description = "empty email test")
+    public void emptyEmailTest() {
+        loginStep.improperLogin("", ReadProperties.password())
+                .getEmptyTextLocator()
+                .shouldHave(text("Email/Login is required."));
+
+    }
+
     @Description("login with fake password")
     @Story("Negative test")
     @Test(description = "fake pass test")
