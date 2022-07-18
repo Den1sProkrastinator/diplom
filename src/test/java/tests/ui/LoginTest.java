@@ -40,7 +40,7 @@ public class LoginTest extends BaseTest {
     public void emptyEmailTest() {
         loginStep.improperLogin("", ReadProperties.password())
                 .getEmptyTextLocator()
-                .shouldHave(text("Email/Login is required."));
+                .shouldHave(text("mail/Login is required."));
 
     }
 
