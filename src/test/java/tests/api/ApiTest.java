@@ -121,4 +121,9 @@ public class ApiTest extends BaseApiTest {
     }
 
 
+    public void justForFailProject() {
+        projectHelper.deleteProject(50);
+    }
+
+
 }
