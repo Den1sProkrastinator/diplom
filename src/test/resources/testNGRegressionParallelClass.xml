@@ -2,7 +2,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Regression" parallel="classes" thread-count="10">
     <test name="parallel method test">
-        <parameter name="browser" value="chrome" />
         <classes>
             <class name="tests.ui.CrudTSuiteTest"/>
             <class name="tests.ui.LoginTest"/>
