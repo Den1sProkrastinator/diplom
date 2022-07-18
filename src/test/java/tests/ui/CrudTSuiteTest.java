@@ -38,7 +38,7 @@ public class CrudTSuiteTest extends BaseTest {
         editTestSuiteStep.getTestSuiteName()
                 .shouldHave(value("First Suite"));
         editTestSuiteStep.getTestSuiteDescription()
-                .shouldHave(text("aefafaefaef"));
+                .shouldHave(text("test purposes"));
     }
 
     @Description("update functionality and upload picture")
