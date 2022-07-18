@@ -107,7 +107,7 @@ public class ApiTest extends BaseApiTest {
     @Feature("NFE tests")
     @Story("Delete Suite test")
     @Description("Delete Suite, expected status cod - 200")
-    public void deleteSuite() {
+    public void deleteSuiteTest() {
         suiteHelper.deleteSuite(suiteID);
     }
 
@@ -116,11 +116,11 @@ public class ApiTest extends BaseApiTest {
     @Feature("NFE tests")
     @Story("Delete Project test")
     @Description("Delete Project, expected status cod - 200")
-    public void deleteProject() {
+    public void deleteProjectTest() {
         projectHelper.deleteProject(projectId);
     }
 
-
+    @Test
     public void justForFailProject() {
         projectHelper.deleteProject(50);
     }
