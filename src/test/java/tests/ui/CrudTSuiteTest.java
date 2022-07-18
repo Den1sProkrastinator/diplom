@@ -13,7 +13,6 @@ import static com.codeborne.selenide.Selenide.open;
 @Epic("Diploma UI tests")
 @Feature("Crud  tests")
 public class CrudTSuiteTest extends BaseTest {
-
     @Description("create functionality")
     @Test(description = "create test")
     public void createTest() {

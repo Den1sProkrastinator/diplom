@@ -1,9 +1,7 @@
 package helpers;
 
 import core.Endpoints;
-import io.restassured.mapper.ObjectMapperType;
 import io.restassured.path.json.JsonPath;
-import models.Suite;
 import org.apache.http.HttpStatus;
 
 

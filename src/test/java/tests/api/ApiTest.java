@@ -56,7 +56,6 @@ public class ApiTest extends BaseApiTest {
 
     }
 
-
     @Test(dependsOnMethods ="addSuite", description = "NFE Get Suite test",groups = "main tests",threadPoolSize = 3)
     @Feature("NFE tests")
     @Story("Get suite")
@@ -72,7 +71,6 @@ public class ApiTest extends BaseApiTest {
     public void getSuitesNFETest() {
         suiteHelper.getSuites(projectId, HttpStatus.SC_OK);
     }
-
 
     @Test(dependsOnMethods ="addSuite", description = "NFE Comparison actual suite name and adjusted suite name ",groups = "main tests",threadPoolSize = 3)
     @Feature("NFE tests")

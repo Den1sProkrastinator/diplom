@@ -27,8 +27,4 @@ public class AddProjectTest extends BaseTest {
         navigationStep.navigateToDashboardFromProjectOverviewPage();
     }
 
-
-
-
-
 }

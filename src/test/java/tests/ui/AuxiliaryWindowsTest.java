@@ -12,8 +12,6 @@ import static com.codeborne.selenide.Condition.text;
 @Feature("Auxiliary windows tests")
 public class AuxiliaryWindowsTest extends BaseTest {
 
-
-
     @Description("dialog window function delete  test")
     @Test(description = "dialog window delete test ")
     public void dialogWindowDeleteTest() {
