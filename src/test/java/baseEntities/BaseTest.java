@@ -38,7 +38,7 @@ public class BaseTest {
 
 
     @AfterMethod
-    public void closeWebDriver(){
+    public void tearDown(){
         closeWebDriver();
     }
 
