@@ -4,11 +4,14 @@ import baseEntities.BaseTest;
 import com.codeborne.selenide.Condition;
 import core.ReadProperties;
 import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Condition.text;
 
-
+@Epic("Diploma UI tests")
+@Feature("Login  test")
 public class LoginTest extends BaseTest {
 
 

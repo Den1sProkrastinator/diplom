@@ -3,16 +3,19 @@ package tests.ui;
 import baseEntities.BaseTest;
 import core.ReadProperties;
 import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Condition.text;
-
+@Epic("Diploma UI tests")
+@Feature("Auxiliary windows tests")
 public class AuxiliaryWindowsTest extends BaseTest {
 
 
 
-    @Description("dialog window function (delete)  test")
-    @Test
+    @Description("dialog window function delete  test")
+    @Test(description = "dialog window delete test ")
     public void dialogWindowDeleteTest() {
         loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
         dashboardStep.openProject("First");
@@ -26,17 +29,20 @@ public class AuxiliaryWindowsTest extends BaseTest {
     }
 
 
+
     @Description("Popup validation")
-    @Test
-    public void PopupTest() {
+    @Test(description = "popup test")
+    public void popupTest() {
         loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
         dashboardStep.popupText();
 
     }
 
+
+
     @Description("upload picture")
-    @Test
-    public void UploadTest() {
+    @Test(description ="upload test")
+    public void uploadTest() {
         loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
         dashboardStep.openProject("aefae");
         projectOverviewStep.selectSuite();

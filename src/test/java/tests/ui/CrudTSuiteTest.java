@@ -3,18 +3,21 @@ package tests.ui;
 import baseEntities.BaseTest;
 import core.ReadProperties;
 import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.value;
 import static com.codeborne.selenide.Selenide.open;
-
+@Epic("Diploma UI tests")
+@Feature("Crud  tests")
 public class CrudTSuiteTest extends BaseTest {
 
 
 
     @Description("create functionality")
-    @Test
+    @Test(description = "create test")
     public void createTest() {
         loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
         dashboardStep.openProject("aefae");
@@ -26,9 +29,9 @@ public class CrudTSuiteTest extends BaseTest {
         navigationStep.navigateToDashboardFromTestSuiteOverviewPage();
 
     }
-    @Description("read functionality")
-    @Test
 
+    @Description("read functionality")
+    @Test(description = "read test")
     public void readTest() {
         loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
         dashboardStep.openProject("Second");
@@ -40,8 +43,9 @@ public class CrudTSuiteTest extends BaseTest {
         editTestSuiteStep.getTestSuiteDescription()
                 .shouldHave(text("aefafaefaef"));
     }
+
     @Description("update functionality and upload picture")
-    @Test
+    @Test(description = "update test")
     public void updateTest() {
         loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
         dashboardStep.openProject("aefae");
@@ -56,7 +60,7 @@ public class CrudTSuiteTest extends BaseTest {
 
 
     @Description("delete functionality")
-    @Test
+    @Test(description = "delete test")
     public void deleteTest() {
         loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
         dashboardStep.openProject("aefae");
@@ -72,7 +76,7 @@ public class CrudTSuiteTest extends BaseTest {
 
 
 
-    @Test
+    @Test(description = "")
     public void readAfterUpdateTest() {
         loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
         dashboardStep.openProject("aefae");
