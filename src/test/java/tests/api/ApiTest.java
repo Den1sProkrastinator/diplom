@@ -34,7 +34,7 @@ public class ApiTest extends BaseApiTest {
     public void addProjectNFETest() {
         System.out.println();
         Project project = Project.builder()
-                .name("Test project")
+                .name(suiteName)
                 .build();
         Map<String, Object> jsonMap = new HashMap<>();
         jsonMap.put("name", project.getName());
