@@ -76,8 +76,8 @@ public class ApiTest extends BaseApiTest {
 
     @Test(dependsOnMethods ="addSuite", description = "NFE Comparison actual suite name and adjusted suite name ",groups = "main tests",threadPoolSize = 3)
     @Feature("NFE tests")
-    @Story("Get  Suite name")
-    @Description(" Comparison of current ")
+    @Story("Comparison Suite names")
+    @Description(" Comparison of current and comparable suite names ")
     public void getSuiteName() {
      String actualSuiteName =   suiteHelper.getSuiteName(suiteID);
         Assert.assertEquals(actualSuiteName,suiteName);
